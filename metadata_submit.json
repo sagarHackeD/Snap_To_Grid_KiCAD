@@ -33,10 +33,10 @@
             "version": "1.0.0",
             "status": "stable",
             "kicad_version": "6.0",
-            "download_url": "https://github.com/sagarHackeD/Snap_To_Grid_KiCAD/releases/download/v1.0.0/kicad-package.zip",
-            "download_sha256": "e825a1b70a8e474c0b30a4c1bafcfd7fc99cdd861d9284389df9df0d7fae59af",
-            "download_size": 10770,
-            "install_size": 12373
+            "download_url": "https://github.com/sagarHackeD/Snap_To_Grid_KiCAD/releases/download/kicad/snap_to_grid.zip",
+            "download_sha256": "5cbf499b083fdad8c087ec3c3c9219e84bc973f2760cbfdf1b50d166cd0d8f03",
+            "download_size": 8513,
+            "install_size": 10116
         }
     ]
 }
