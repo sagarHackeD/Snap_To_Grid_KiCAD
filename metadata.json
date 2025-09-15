@@ -33,7 +33,7 @@
             "version": "1.0.0",
             "status": "stable",
             "kicad_version": "6.0",
-            "download_url": "https://github.com/sagarHackeD/Snap_To_Grid_KiCAD/releases/download/v1.0.0/kicad-package.zip"
+            "download_url": "https://github.com/sagarHackeD/Snap_To_Grid_KiCAD/releases/download/kicad/snap_to_grid.zip"
         }
     ]
 }
