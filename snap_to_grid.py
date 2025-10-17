@@ -9,12 +9,13 @@ import wx
 def get_grid(grid_selection):
     "funtion to get currently selected grid"
     grid_data = grid_selection.split(' ')
+    grid_data_invariant = float(grid_data[0].replace(",","."))
     if grid_data[1] == 'mm':
-        return pcbnew.FromMM(float(grid_data[0]))
+        return pcbnew.FromMM(grid_data_invariant)
     if grid_data[1] == 'mils':
-        return pcbnew.FromMils(float(grid_data[0]))
+        return pcbnew.FromMils(grid_data_invariant)
     if grid_data[1] == 'in':
-        return pcbnew.FromMM(float(grid_data[0])/25.4)
+        return pcbnew.FromMM(grid_data_invariant/25.4)
     return None
 
 
