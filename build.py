@@ -2,7 +2,6 @@ import hashlib
 import json
 import os
 import shutil
-import subprocess
 import zipfile
 
 from PIL import Image
@@ -63,24 +62,22 @@ def remove_build_dir():
 def create_build_dir():
     os.mkdir("build")
     os.mkdir("build/resources")
-    os.mkdir("build/plugin")
+    os.mkdir("build/plugins")
+
+
+def copy_icons_to_build_dir():
+    resize_image("icon.png", (64, 64), "build/resources/icon.png")
+    resize_image("icon.png", (24, 24), "build/plugins/icon.png")
 
 
 def copy_files_to_build_dir():
-    # resize_image("icon.png", (64, 64), "build/resources/icon.png")
-    # resize_image("icon.png", (24, 24), "build/plugin/icon.png")
-    shutil.copy("__init__.py", "build/plugin")
-    shutil.copy("snap_to_grid.py", "build/plugin")
+    shutil.copy("__init__.py", "build/plugins")
+    shutil.copy("snap_to_grid.py", "build/plugins")
     shutil.copy("metadata.json", "build")
-
-    subprocess.run()
 
 
 def build_plugin_zip(zip_filename):
-    # zip = zipfile.ZipFile("build", "w", compression=zipfile.ZIP_DEFLATED)
-
     shutil.make_archive(zip_filename.replace(".zip", ""), "zip", "build")
-
     print(f"Created {zip_filename}")
 
 
@@ -98,7 +95,10 @@ def generate_metadata(output_metadata_file, zip_filename):
 
 
 if __name__ == "__main__":
-    # remove_build_dir()
-    # create_build_dir()
-    # copy_files_to_build_dir()
+    remove_build_dir()
+    create_build_dir()
+    copy_files_to_build_dir()
+    copy_icons_to_build_dir()
     build_plugin_zip("kicad-package.zip")
+    generate_metadata("kicad-package-metadata.json", "kicad-package.zip")
+    remove_build_dir()
