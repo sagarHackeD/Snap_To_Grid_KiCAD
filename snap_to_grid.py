@@ -51,7 +51,10 @@ class SnapToGrid(pcbnew.ActionPlugin):
                 #y = round(pos[1],grid)
                 # pos = pcbnew.PutOnGridMM(pos[0], grid_se[gs.CurrentSelection]),
                 #                  pcbnew.PutOnGridMM(pos[1], grid_se[gs.CurrentSelection])
-                footprint.SetPosition(pcbnew.VECTOR2I(int(x), int(y)))
+                try:
+                    footprint.SetPosition(pcbnew.VECTOR2I(int(x), int(y)))
+                except:
+                    footprint.SetPosition(pcbnew.wxPoint(int(x), int(y)))  # for KiCad 6
                 # print(footprint.GetReference(),pos,x,y)
         #pcbnew.Refresh()
 
