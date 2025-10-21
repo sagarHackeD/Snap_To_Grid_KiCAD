@@ -8,6 +8,7 @@ import wx
 @lru_cache()        #(maxsize=5)
 def get_grid(grid_selection):
     "funtion to get currently selected grid"
+    grid_selection = grid_selection.strip("Grid: ")  # for KiCad 6
     grid_data = grid_selection.split(' ')
     grid_data_invariant = float(grid_data[0].replace(",","."))
     if grid_data[1] == 'mm':
