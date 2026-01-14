@@ -1,9 +1,11 @@
 "A KiCAD action plugin to snap components to the grid"
 
-from functools import lru_cache
 import os
+from functools import lru_cache
+
 import pcbnew
 import wx
+
 
 @lru_cache()        #(maxsize=5)
 def get_grid(grid_selection):
@@ -33,6 +35,12 @@ class SnapToGrid(pcbnew.ActionPlugin):
         self.show_toolbar_button = True
         self.icon_file_name = os.path.join(os.path.dirname(__file__), 'icon.png')
 
+    def round_off(self, value, grid):
+        "function to round off value to nearest grid"
+        if value<0:
+            return int((value-(grid/2))/grid)*grid
+        return int((value+(grid/2))/grid)*grid
+
     def Run(self):
         # print("Sagar Naik - Snap to grid")
         #gs = wx.FindWindowById(pcbnew.ID_ON_GRID_SELECT)
@@ -45,8 +53,10 @@ class SnapToGrid(pcbnew.ActionPlugin):
         for footprint in board.GetFootprints():
             if footprint.IsSelected() and not footprint.IsLocked():
                 pos = footprint.GetPosition()
-                x = int((pos[0]+(grid/2))/grid)*grid
-                y = int((pos[1]+(grid/2))/grid)*grid
+
+                x = self.round_off(pos[0],grid)
+                y = self.round_off(pos[1],grid)
+
                 #x = round(pos[0],grid) #there is something wrong with python round funtion
                                         # so i roled back to previous metohd on 28/09/2020
                 #y = round(pos[1],grid)
@@ -54,7 +64,7 @@ class SnapToGrid(pcbnew.ActionPlugin):
                 #                  pcbnew.PutOnGridMM(pos[1], grid_se[gs.CurrentSelection])
                 try:
                     footprint.SetPosition(pcbnew.VECTOR2I(int(x), int(y)))
-                except:
+                except TypeError:
                     footprint.SetPosition(pcbnew.wxPoint(int(x), int(y)))  # for KiCad 6
                 # print(footprint.GetReference(),pos,x,y)
         #pcbnew.Refresh()
