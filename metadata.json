@@ -17,6 +17,11 @@
             "github": "https://github.com/sagarHackeD"
         }
     },
+    "Repository":{
+        "owner": "sagarHackeD",
+        "url": "https://github.com/sagarHackeD/Snap_To_Grid_KiCAD",
+        "name": "Snap_To_Grid_KiCAD"
+    },
     "license": "GPL-3.0",
     "resources": {
         "homepage": "https://github.com/sagarHackeD/Snap_To_Grid_KiCAD"
