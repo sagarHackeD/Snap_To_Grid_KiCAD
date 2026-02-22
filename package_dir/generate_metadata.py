@@ -55,7 +55,7 @@ def generate_metadata(
 
 
 if __name__ == "__main__":
-    zip_file_url = "https://github.com/sagarHackeD/Snap_To_Grid_KiCAD/releases/download/v1.0.0/kicad-package.zip"
+    zip_file_url = "https://github.com/sagarHackeD/Snap_To_Grid_KiCAD/releases/download/v2.0.0/kicad-package.zip"
 
     curll_command = (
         f'curl -L -o "package_dir/Downloaded-kicad-package.zip" "{zip_file_url}"'
