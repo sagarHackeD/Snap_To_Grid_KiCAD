@@ -1,0 +1,25 @@
+{
+    "$schema": "https://go.kicad.org/api/schemas/v1",
+    "identifier": "com.github.sagarHackeD.SnapToGridKiCAD",
+    "name": "Snap To Grid",
+    "description": "Snap all selected footprints to the nearest grid point",
+    "runtime": {
+        "type": "python",
+        "min_version": "3.9"
+    },
+    "actions": [
+        {
+            "identifier": "Snap_To_Grid_KiCAD",
+            "name": "Snap To Grid",
+            "description": "Snap all selected footprints to the nearest grid point",
+            "show-button": true,
+            "scopes": [
+                "pcb"
+            ],
+            "entrypoint": "snap.py",
+            "icons-light": [
+                "icon.png"
+            ]
+        }
+    ]
+}
